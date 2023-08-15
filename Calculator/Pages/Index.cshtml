@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Calculator</h1>
+    <form method="post">
+        <label for="left">Left operand:</label>
+        <select id="left" name="left">
+            @for (int i = 0; i < 100; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+        <label for="operation">Operation:</label>
+        <select id="operation" name="operation">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="/">/</option>
+            <option value="*">*</option>
+        </select>
+        <label for="right">Right operand:</label>
+        <select id="right" name="right">
+            @for (int i = 0; i < 100; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+        <br />
+        <button type="submit">Calculate</button>
+    </form>
+    @if (Model.Error != null)
+    {
+        <p style="color: red">@Model.Error</p>
+    }
+    else if (Model.Result.HasValue)
+    {
+        <p>Result: @Model.Result</p>
+    }
+</div>
