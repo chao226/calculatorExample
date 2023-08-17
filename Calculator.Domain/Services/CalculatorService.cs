@@ -23,12 +23,12 @@ namespace Calculator.Domain.Services
                 checked
                 {
                     int result = a + b;
-                    return Result.Ok(result);
+                    return Result.Success(result);
                 }
             }
             catch (System.OverflowException ex)
             {
-                return Result.Fail<int>(ex.Message);
+                return Result.Failure<int>(ex.Message);
             }
         }
 
@@ -45,12 +45,12 @@ namespace Calculator.Domain.Services
                 checked
                 {
                     int result = a - b;
-                    return Result.Ok(result);
+                    return Result.Success(result);
                 }
             }
             catch (System.OverflowException ex)
             {
-                return Result.Fail<int>(ex.Message);
+                return Result.Failure<int>(ex.Message);
             }
         }
 
@@ -65,11 +65,11 @@ namespace Calculator.Domain.Services
         {
             if (b == 0)
             {
-                return Result.Fail<int>(DivideByZeroErrorMessage);
+                return Result.Failure<int>(DivideByZeroErrorMessage);
             }
 
             int result = a / b;
-            return Result.Ok(result);
+            return Result.Success(result);
         }
 
         /// <summary>
@@ -85,12 +85,12 @@ namespace Calculator.Domain.Services
                 checked
                 {
                     int result = a * b;
-                    return Result.Ok(result);
+                    return Result.Success(result);
                 }
             }
             catch (System.OverflowException ex)
             {
-                return Result.Fail<int>(ex.Message);
+                return Result.Failure<int>(ex.Message);
             }
         }
     }
